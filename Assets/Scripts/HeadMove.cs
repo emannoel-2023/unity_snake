@@ -13,16 +13,17 @@ public class HeadMove : MonoBehaviour
 
         if(xAxis != 0)
         {
-            direction = vector2.right * xAxis;
+            direction = Vector2.right * xAxis;
         }
         if (yAxis != 0)
         {
-            direction = vector2.up * yAxis;
+            direction = Vector2.up * yAxis;
         }
     }
 
     void MoveSnake()
     {
-
+        float roundPosiX = Mathf.Round(transform.position.x);
+        float roundPosiY = Mathf.Round(transform.position.y);
     }
 }
