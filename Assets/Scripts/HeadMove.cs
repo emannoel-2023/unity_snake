@@ -20,10 +20,15 @@ public class HeadMove : MonoBehaviour
             direction = Vector2.up * yAxis;
         }
     }
-
+    private void FixedUpdate()
+    {
+        MoveSnake();
+    }
     void MoveSnake()
     {
         float roundPosiX = Mathf.Round(transform.position.x);
         float roundPosiY = Mathf.Round(transform.position.y);
+
+        transform.position = new Vector2(roundPosiX + direction.x, roundPosiY + direction.y);
     }
 }
