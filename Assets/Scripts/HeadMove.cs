@@ -30,6 +30,10 @@ public class HeadMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        for (int i = snakePiecesBody.Count -1 ; i > 0; i--)
+        {
+            snakePiecesBody[i].position = snakePiecesBody[i - 1].position;
+        }
         MoveSnake();
     }
     void MoveSnake()
