@@ -33,7 +33,7 @@ public class HeadMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        for (int i = snakePiecesBody.Count -1 ; i > 0; i--)
+        for (int i = snakePiecesBody.Count - 1; i > 0; i--)
         {
             snakePiecesBody[i].position = snakePiecesBody[i - 1].position;
         }
@@ -46,9 +46,16 @@ public class HeadMove : MonoBehaviour
 
         transform.position = new Vector2(roundPosiX + direction.x, roundPosiY + direction.y);
     }
+    public void BtnRestartGame()
+    {
+        gM.gameOverPanel.SetActive(false);
+        Time.timeScale = 1;
+        transform.position = Vector2.zero;
+        direction = Vector2.zero;
+    }
     void GrowingSnake()
     {
-        Transform SpawnBody = Instantiate(body, snakePiecesBody[snakePiecesBody.Count -1].position, Quaternion.identity);
+        Transform SpawnBody = Instantiate(body, snakePiecesBody[snakePiecesBody.Count - 1].position, Quaternion.identity);
         snakePiecesBody.Add(SpawnBody);
         gM.SetScore(10);
     }
@@ -58,6 +65,9 @@ public class HeadMove : MonoBehaviour
         {
             case "Food":
                 GrowingSnake();
+                break;
+            case "Obstacle":
+                gM.GameOver();
                 break;
         }
     }
