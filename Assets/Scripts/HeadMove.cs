@@ -8,9 +8,12 @@ public class HeadMove : MonoBehaviour
     [SerializeField] List<Transform> snakePiecesBody;
     [SerializeField] Transform body;
 
+    GameManager gM;
+
 
     private void Start()
     {
+        gM = FindObjectOfType<GameManager>();
         snakePiecesBody = new List<Transform>();
         snakePiecesBody.Add(transform);
     }
@@ -47,6 +50,7 @@ public class HeadMove : MonoBehaviour
     {
         Transform SpawnBody = Instantiate(body, snakePiecesBody[snakePiecesBody.Count -1].position, Quaternion.identity);
         snakePiecesBody.Add(SpawnBody);
+        gM.SetScore(10);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
