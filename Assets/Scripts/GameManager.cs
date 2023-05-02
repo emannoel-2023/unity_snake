@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Text ScoreText;
-    [SerializeField] int score;
+    public Text ScoreText;
+    public int score;
+    public Text hScoreText;
+    public int hScore;
     public GameObject gameOverPanel;
 
     public void SetScore(int value)
@@ -17,6 +19,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+
+        if (score > hScore)
+        {
+            PlayerPrefs.SetInt("hScore", score);
+            hScoreText.text = "New H-Score: " + score.ToString();
+        }
+
         Time.timeScale = 0;
     }
 }

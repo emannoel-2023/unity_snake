@@ -16,6 +16,9 @@ public class HeadMove : MonoBehaviour
         gM = FindObjectOfType<GameManager>();
         snakePiecesBody = new List<Transform>();
         snakePiecesBody.Add(transform);
+
+        gM.hScore = PlayerPrefs.GetInt("hScore");
+        gM.hScoreText.text = "H-score: " + gM.hScore.ToString();
     }
     private void Update()
     {
@@ -52,6 +55,15 @@ public class HeadMove : MonoBehaviour
         Time.timeScale = 1;
         transform.position = Vector2.zero;
         direction = Vector2.zero;
+
+        for (int i = 1; i < snakePiecesBody.Count; i++)
+        {
+            Destroy(snakePiecesBody[i].gameObject);
+        }
+        snakePiecesBody.Clear();
+        snakePiecesBody.Add(transform);
+        gM.hScore = PlayerPrefs.GetInt("hScore");
+        gM.hScoreText.text = "H-score: " + gM.hScore.ToString();
     }
     void GrowingSnake()
     {
