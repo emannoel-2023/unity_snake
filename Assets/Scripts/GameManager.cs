@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public Text hScoreText;
     public int hScore;
-    public GameObject gameOverPanel;
+    public GameObject gameOverPanel, startPanel;
 
     public void SetScore(int value)
     {
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        startPanel.SetActive(false);
         gameOverPanel.SetActive(true);
 
         if (score > hScore)

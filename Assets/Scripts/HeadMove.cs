@@ -51,6 +51,7 @@ public class HeadMove : MonoBehaviour
     }
     public void BtnRestartGame()
     {
+        gM.startPanel.SetActive(false);
         gM.gameOverPanel.SetActive(false);
         Time.timeScale = 1;
         transform.position = Vector2.zero;
@@ -62,6 +63,10 @@ public class HeadMove : MonoBehaviour
         }
         snakePiecesBody.Clear();
         snakePiecesBody.Add(transform);
+
+        gM.score = 0;
+        gM.ScoreText.text = "Score : 0";
+
         gM.hScore = PlayerPrefs.GetInt("hScore");
         gM.hScoreText.text = "H-score: " + gM.hScore.ToString();
     }
